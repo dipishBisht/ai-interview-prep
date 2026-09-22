@@ -14,7 +14,18 @@ const HIRING_TERMS = [
   "interview",
 ];
 
-export function rankHiringLinks(links: ExtractedLink[]): ExtractedLink[] {
+const COMPANY_TERMS = [
+  "about",
+  "about us",
+  "company",
+  "who we are",
+  "what we do",
+  "products",
+  "services",
+  "solutions",
+];
+
+export function rankResearchLinks(links: ExtractedLink[]) {
   return links
     .map((link) => {
       const haystack = `${link.text} ${link.url}`.toLowerCase();
@@ -24,6 +35,12 @@ export function rankHiringLinks(links: ExtractedLink[]): ExtractedLink[] {
       for (const term of HIRING_TERMS) {
         if (haystack.includes(term)) {
           score += 10;
+        }
+      }
+
+      for (const term of COMPANY_TERMS) {
+        if (haystack.includes(term)) {
+          score += 5;
         }
       }
 

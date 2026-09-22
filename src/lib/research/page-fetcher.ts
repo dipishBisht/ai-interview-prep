@@ -10,6 +10,7 @@ export type FetchedPage = {
   title: string;
   text: string;
   status: number;
+  html: string;
 };
 
 export async function fetchPage(rawUrl: string): Promise<FetchedPage> {
@@ -61,6 +62,7 @@ export async function fetchPage(rawUrl: string): Promise<FetchedPage> {
       title: cleaned.title,
       text: cleaned.text,
       status: response.status,
+      html,
     };
   } finally {
     clearTimeout(timeout);
