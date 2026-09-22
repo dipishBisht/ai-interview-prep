@@ -18,11 +18,7 @@ export const questionSchema = z.object({
   ]),
   prompt: z.string().min(1),
   answer_outline: z.string().min(1),
-  difficulty: z.union([
-    z.literal(1),
-    z.literal(2),
-    z.literal(3),
-  ]),
+  difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]),
 });
 
 export const flashcardSchema = z.object({
